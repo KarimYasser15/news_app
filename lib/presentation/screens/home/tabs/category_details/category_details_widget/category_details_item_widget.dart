@@ -7,27 +7,29 @@ import 'package:news_app/data/model/articles_response/article.dart';
 import '../../../../../../config/theme/app_styles.dart';
 
 class CategoryDetailsItemWidget extends StatelessWidget {
-  CategoryDetailsItemWidget({super.key, required this.article});
+  const CategoryDetailsItemWidget({super.key, required this.article});
 
-  Article article;
-
+  final Article article;
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(10.h),
       child: InkWell(
-        onTap: () => Navigator.pushNamed(context, RoutesManager.articleDetails,arguments: article),
+        onTap: () => Navigator.pushNamed(context, RoutesManager.articleDetails,
+            arguments: article),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(10.r)),
-                child: CachedNetworkImage(
-                  imageUrl: article.urlToImage??"",
-                  progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      CircularProgressIndicator(value: downloadProgress.progress),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
-                ),),
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(10.r)),
+              child: CachedNetworkImage(
+                imageUrl: article.urlToImage ?? "",
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    CircularProgressIndicator(value: downloadProgress.progress),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
+            ),
             SizedBox(
               height: 8.h,
             ),
@@ -56,6 +58,5 @@ class CategoryDetailsItemWidget extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

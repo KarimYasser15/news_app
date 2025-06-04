@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/utils/assets_manager.dart';
 import 'package:news_app/core/utils/colors_manager.dart';
-import 'package:news_app/core/utils/routes_manager.dart';
 import 'package:news_app/core/utils/strings_manager.dart';
 import 'package:news_app/data_model/category.dart';
 import 'package:news_app/presentation/screens/home/drawer/home_drawer.dart';
@@ -21,7 +19,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     selectedTab = Categories(onCategoryClicked: onCategoryClicked);
   }
@@ -30,7 +27,7 @@ class _HomeState extends State<Home> {
   String appBarTitle = StringsManager.newsApp;
   late Widget searchButton;
   Widget appBarSearch = Container();
-  Widget appBarTitle2 = Text(StringsManager.newsApp);
+  Widget appBarTitle2 = const Text(StringsManager.newsApp);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +41,10 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: appBarTitle2,
           actions: [
-            IconButton(onPressed: () => showSearch(context: context,delegate: NewsSearchDelegate()), icon: Icon(Icons.search))
+            IconButton(
+                onPressed: () => showSearch(
+                    context: context, delegate: NewsSearchDelegate()),
+                icon: const Icon(Icons.search))
           ],
         ),
         drawer: HomeDrawer(
@@ -63,8 +63,8 @@ class _HomeState extends State<Home> {
       appBarTitle = categorySelected.title;
       searchButton = IconButton(
         icon: const Icon(Icons.search),
-        onPressed:  () => print("Search"),
-            //Navigator.pushNamed(context,RoutesManager.search),
+        onPressed: () => print("Search"),
+        //Navigator.pushNamed(context,RoutesManager.search),
       );
       appBarSearch = searchButton;
     });

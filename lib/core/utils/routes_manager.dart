@@ -14,21 +14,22 @@ class RoutesManager {
     switch (settings.name) {
       case splash:
         return MaterialPageRoute(
-          builder: (context) => Splash(),
+          builder: (context) => const Splash(),
         );
       case home:
         return MaterialPageRoute(
-          builder: (context) => Home(),
+          builder: (context) => const Home(),
         );
-        case search:
+      case search:
         return MaterialPageRoute(
-          builder: (context) => SearchScreen(),
+          builder: (context) => const SearchScreen(),
         );
-        case articleDetails:
+      case articleDetails:
         return MaterialPageRoute(
           settings: settings,
-          builder: (context) => ArticleDetailsScreen(),
+          builder: (context) => const ArticleDetailsScreen(),
         );
     }
+    return null;
   }
 }

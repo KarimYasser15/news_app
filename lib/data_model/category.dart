@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/core/utils/backendID_manager.dart';
+import 'package:news_app/core/utils/backend_id_manager.dart';
 
 import '../core/utils/assets_manager.dart';
 import '../core/utils/colors_manager.dart';
@@ -16,19 +16,23 @@ class CategoryDataModel {
   String categoryImage;
 
   static List<CategoryDataModel> getAllCategories = [
-    CategoryDataModel(true,StringsManager.sports, ColorsManager.red,
+    CategoryDataModel(true, StringsManager.sports, ColorsManager.red,
         AssetsManager.sportsImage, BackendIdManager.sportsId),
-    CategoryDataModel(false,StringsManager.politics, ColorsManager.blue,
+    CategoryDataModel(false, StringsManager.politics, ColorsManager.blue,
         AssetsManager.politicsImage, BackendIdManager.sportsId),
-    CategoryDataModel(true,StringsManager.health, ColorsManager.pink,
+    CategoryDataModel(true, StringsManager.health, ColorsManager.pink,
         AssetsManager.healthImage, BackendIdManager.healthId),
-    CategoryDataModel(false,StringsManager.business, ColorsManager.brown,
+    CategoryDataModel(false, StringsManager.business, ColorsManager.brown,
         AssetsManager.businessImage, BackendIdManager.businessId),
-    CategoryDataModel(false,StringsManager.environment, ColorsManager.lightBlue,
-        AssetsManager.environmentImage, BackendIdManager.entertainmentId),
-    CategoryDataModel(false,StringsManager.science, ColorsManager.yellow,
+    CategoryDataModel(
+        false,
+        StringsManager.environment,
+        ColorsManager.lightBlue,
+        AssetsManager.environmentImage,
+        BackendIdManager.entertainmentId),
+    CategoryDataModel(false, StringsManager.science, ColorsManager.yellow,
         AssetsManager.scienceImage, BackendIdManager.scienceId),
-    CategoryDataModel(true,StringsManager.technology, Colors.purple,
+    CategoryDataModel(true, StringsManager.technology, Colors.purple,
         AssetsManager.sportsImage, BackendIdManager.technologyId)
   ];
 }

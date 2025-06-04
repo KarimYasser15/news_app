@@ -5,9 +5,9 @@ import 'package:news_app/presentation/screens/home/tabs/category_details/categor
 import 'package:news_app/presentation/screens/home/tabs/category_details/sources_widget/source_item_widget.dart';
 
 class SourcesWidget extends StatefulWidget {
-  SourcesWidget({super.key, required this.sources});
+  const SourcesWidget({super.key, required this.sources});
 
-  List<Source> sources;
+  final List<Source> sources;
 
   @override
   State<SourcesWidget> createState() => _SourcesWidgetState();
@@ -37,13 +37,13 @@ class _SourcesWidgetState extends State<SourcesWidget> {
                     .map(
                       (source) => SourceItemWidget(
                         source: source,
-                        isSelected:
-                            widget.sources[selectedIndex] == source ? true : false,
+                        isSelected: widget.sources[selectedIndex] == source
+                            ? true
+                            : false,
                       ),
                     )
                     .toList())),
         CategoryDetailsWidget(sourceId: widget.sources[selectedIndex].id!),
-
       ],
     );
   }

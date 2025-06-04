@@ -6,15 +6,12 @@ import 'package:news_app/core/utils/strings_manager.dart';
 
 typedef OnDrawerClickedItem = void Function(DrawerItem);
 
-enum DrawerItem {
-  categories,
-  settings
-}
+enum DrawerItem { categories, settings }
 
 class HomeDrawer extends StatelessWidget {
-  HomeDrawer({super.key, required this.onDrawerClickedItem});
+  const HomeDrawer({super.key, required this.onDrawerClickedItem});
 
-  OnDrawerClickedItem onDrawerClickedItem;
+  final OnDrawerClickedItem onDrawerClickedItem;
   @override
   Widget build(BuildContext context) {
     return Drawer(

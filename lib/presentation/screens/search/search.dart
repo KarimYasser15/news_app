@@ -14,7 +14,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: ColorsManager.white,
           image:
               DecorationImage(image: AssetImage(AssetsManager.homeBackground)),
@@ -25,13 +25,12 @@ class _SearchScreenState extends State<SearchScreen> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30.r),
                   color: Colors.white),
-              child: TextField(
+              child: const TextField(
                 style: TextStyle(),
                 decoration: InputDecoration(
                     fillColor: Colors.white, hintText: "Search"),
               ),
             ),
-            //actions: [Center(child: Container(width: 200.w,child: SearchBar()))],
           ),
         ));
   }

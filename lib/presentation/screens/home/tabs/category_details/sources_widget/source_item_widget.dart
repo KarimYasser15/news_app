@@ -5,10 +5,11 @@ import 'package:news_app/core/utils/colors_manager.dart';
 import 'package:news_app/data/model/sources_response/source.dart';
 
 class SourceItemWidget extends StatelessWidget {
-  SourceItemWidget({super.key, required this.source, required this.isSelected});
+  const SourceItemWidget(
+      {super.key, required this.source, required this.isSelected});
 
-  Source source;
-  bool isSelected;
+  final Source source;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {

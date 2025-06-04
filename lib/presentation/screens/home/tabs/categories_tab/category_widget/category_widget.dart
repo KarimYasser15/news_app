@@ -4,8 +4,8 @@ import 'package:news_app/config/theme/app_styles.dart';
 import 'package:news_app/data_model/category.dart';
 
 class CategoryWidget extends StatelessWidget {
-  CategoryWidget({super.key, required this.categoryDM});
-  CategoryDataModel categoryDM;
+  const CategoryWidget({super.key, required this.categoryDM});
+  final CategoryDataModel categoryDM;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,7 +14,7 @@ class CategoryWidget extends StatelessWidget {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(25.r),
               bottomRight: Radius.circular(categoryDM.isLeft ? 0.r : 25.r),
-              bottomLeft: Radius.circular(categoryDM.isLeft? 25.r :0.r),
+              bottomLeft: Radius.circular(categoryDM.isLeft ? 25.r : 0.r),
               topRight: Radius.circular(25.r))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

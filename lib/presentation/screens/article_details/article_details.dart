@@ -7,7 +7,7 @@ import '../../../data/model/articles_response/article.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class ArticleDetailsScreen extends StatelessWidget {
-  ArticleDetailsScreen({
+  const ArticleDetailsScreen({
     super.key,
   });
 
@@ -33,7 +33,7 @@ class ArticleDetailsScreen extends StatelessWidget {
                 imageUrl: article.urlToImage!,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     CircularProgressIndicator(value: downloadProgress.progress),
-                errorWidget: (context, url, error) => Icon(Icons.error),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
               SizedBox(
                 height: 10.h,
@@ -74,10 +74,9 @@ class ArticleDetailsScreen extends StatelessWidget {
                         article.description!,
                         style: AppStyles.articleSource,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       InkWell(
                         onTap: () {
-                          print("View");
                           launchUrl(url);
                         },
                         child: Row(

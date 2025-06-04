@@ -21,10 +21,9 @@ class ApiManager {
 
   static Future<ArticlesResponse> getArticles(
       String? sourceId, String? search) async {
-    Uri url = Uri.https(
-        _baseUrl, _articlesEndPoint, {'apiKey': _apiKey, 'sources': sourceId, 'q':search});
+    Uri url = Uri.https(_baseUrl, _articlesEndPoint,
+        {'apiKey': _apiKey, 'sources': sourceId, 'q': search});
     http.Response serverResponse = await http.get(url);
-    print(sourceId);
     var jsonResponse = jsonDecode(serverResponse.body);
     ArticlesResponse articlesResponse = ArticlesResponse.fromJson(jsonResponse);
     return articlesResponse;

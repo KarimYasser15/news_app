@@ -5,9 +5,9 @@ import 'package:news_app/data_model/category.dart';
 import 'package:news_app/presentation/screens/home/tabs/category_details/sources_widget/sources_widget.dart';
 
 class CategoryDetails extends StatefulWidget {
-  CategoryDetails({super.key, required this.category});
+  const CategoryDetails({super.key, required this.category});
 
-  CategoryDataModel category;
+  final CategoryDataModel category;
 
   @override
   State<CategoryDetails> createState() => _CategoryDetailsState();
@@ -35,5 +35,4 @@ class _CategoryDetailsState extends State<CategoryDetails> {
       },
     );
   }
-
 }

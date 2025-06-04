@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/config/theme/my_theme.dart';
-import 'package:news_app/core/utils/colors_manager.dart';
 import 'package:news_app/data/api/api_manager.dart';
 import 'package:news_app/data/model/articles_response/article.dart';
 import 'package:news_app/data/model/articles_response/articles_response.dart';
@@ -12,8 +11,7 @@ class NewsSearchDelegate extends SearchDelegate {
   @override
   ThemeData appBarTheme(BuildContext context) {
     return ThemeData(
-        appBarTheme: MyTheme.lightTheme.appBarTheme,
-
+      appBarTheme: MyTheme.lightTheme.appBarTheme,
       inputDecorationTheme: InputDecorationTheme(
         fillColor: Colors.white,
         filled: true,
@@ -31,7 +29,7 @@ class NewsSearchDelegate extends SearchDelegate {
     return [
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.r),
-        child: Icon(Icons.search),
+        child: const Icon(Icons.search),
       )
     ];
   }
@@ -44,13 +42,14 @@ class NewsSearchDelegate extends SearchDelegate {
           onPressed: () {
             close(context, null);
           },
-          icon: Icon(Icons.close)),
+          icon: const Icon(Icons.close)),
     );
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    return FutureBuilder(future: ApiManager.getArticles("", query),
+    return FutureBuilder(
+      future: ApiManager.getArticles("", query),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
@@ -60,7 +59,7 @@ class NewsSearchDelegate extends SearchDelegate {
         if (snapshot.data?.status == "error" || snapshot.hasError) {
           return Text(snapshot.data?.message ?? "Please Check Your Connection");
         }
-        List<Article> articleResponse  = snapshot.data!.articles!;
+        List<Article> articleResponse = snapshot.data!.articles!;
         return Expanded(
           child: ListView.builder(
             itemBuilder: (context, index) =>
@@ -68,12 +67,14 @@ class NewsSearchDelegate extends SearchDelegate {
             itemCount: articleResponse.length,
           ),
         );
-      },);
+      },
+    );
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return FutureBuilder(future: ApiManager.getArticles("", query),
+    return FutureBuilder(
+      future: ApiManager.getArticles("", query),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
@@ -83,14 +84,15 @@ class NewsSearchDelegate extends SearchDelegate {
         if (snapshot.hasError || snapshot.data == null) {
           return Text(snapshot.data?.message ?? "Please Check Your Connection");
         }
-        ArticlesResponse articleResponse  = snapshot.data!;
+        ArticlesResponse articleResponse = snapshot.data!;
         return Expanded(
           child: ListView.builder(
-            itemBuilder: (context, index) =>
-                CategoryDetailsItemWidget(article: articleResponse.articles![index]),
+            itemBuilder: (context, index) => CategoryDetailsItemWidget(
+                article: articleResponse.articles![index]),
             itemCount: articleResponse.articles?.length ?? 0,
           ),
         );
-      },);
+      },
+    );
   }
 }

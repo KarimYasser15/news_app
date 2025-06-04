@@ -10,8 +10,9 @@ typedef OnCategoryClicked = void Function(CategoryDataModel);
 class Categories extends StatelessWidget {
   Categories({super.key, required this.onCategoryClicked});
 
-  List<CategoryDataModel> allCategories = CategoryDataModel.getAllCategories;
-  OnCategoryClicked onCategoryClicked;
+  final List<CategoryDataModel> allCategories =
+      CategoryDataModel.getAllCategories;
+  final OnCategoryClicked onCategoryClicked;
 
   @override
   Widget build(BuildContext context) {
