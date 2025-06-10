@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/data/api/api_manager.dart';
 import 'package:news_app/data/model/sources_response/source.dart';
-import 'package:news_app/data_model/category.dart';
-import 'package:news_app/presentation/screens/home/tabs/category_details/sources_widget/sources_widget.dart';
+import 'package:news_app/features/categories/data_model/category.dart';
+import 'package:news_app/features/news/sources/view/sources_widget.dart';
 
-class CategoryDetails extends StatefulWidget {
-  const CategoryDetails({super.key, required this.category});
+class NewsTab extends StatefulWidget {
+  const NewsTab({super.key, required this.category});
 
   final CategoryDataModel category;
 
   @override
-  State<CategoryDetails> createState() => _CategoryDetailsState();
+  State<NewsTab> createState() => _NewsTabState();
 }
 
-class _CategoryDetailsState extends State<CategoryDetails> {
+class _NewsTabState extends State<NewsTab> {
   Source? selectedSource;
 
   @override

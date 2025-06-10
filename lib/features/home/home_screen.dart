@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:news_app/core/utils/assets_manager.dart';
 import 'package:news_app/core/utils/colors_manager.dart';
 import 'package:news_app/core/utils/strings_manager.dart';
-import 'package:news_app/data_model/category.dart';
-import 'package:news_app/presentation/screens/home/drawer/home_drawer.dart';
-import 'package:news_app/presentation/screens/home/tabs/categories_tab/categories.dart';
-import 'package:news_app/presentation/screens/home/tabs/category_details/category_details.dart';
-import 'package:news_app/presentation/screens/home/tabs/settings_tab/settings.dart';
-import 'package:news_app/presentation/screens/news_search/news_search_delegate.dart';
+import 'package:news_app/features/categories/data_model/category.dart';
+import 'package:news_app/features/home/drawer/home_drawer.dart';
+import 'package:news_app/features/categories/categories.dart';
+import 'package:news_app/features/news/news_tab.dart';
+import 'package:news_app/features/search/news_search_delegate.dart';
+import 'package:news_app/features/settings/settings_tab.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
@@ -57,7 +57,7 @@ class _HomeState extends State<Home> {
 
   onCategoryClicked(CategoryDataModel categorySelected) {
     setState(() {
-      selectedTab = CategoryDetails(
+      selectedTab = NewsTab(
         category: categorySelected,
       );
       appBarTitle = categorySelected.title;
@@ -84,7 +84,7 @@ class _HomeState extends State<Home> {
           }
         case DrawerItem.settings:
           {
-            selectedTab = const Settings();
+            selectedTab = const SettingsTab();
             appBarTitle = StringsManager.settings;
             appBarSearch = Container();
             break;

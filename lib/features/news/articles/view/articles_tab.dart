@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/data/api/api_manager.dart';
 import 'package:news_app/data/model/articles_response/article.dart';
-import 'package:news_app/presentation/screens/home/tabs/category_details/category_details_widget/category_details_item_widget.dart';
+import 'package:news_app/features/news/articles/view/articles_item_widget.dart';
 
-class CategoryDetailsWidget extends StatelessWidget {
-  const CategoryDetailsWidget({super.key, required this.sourceId});
+class ArticlesTab extends StatelessWidget {
+  const ArticlesTab({super.key, required this.sourceId});
 
   final String sourceId;
 
@@ -25,7 +25,7 @@ class CategoryDetailsWidget extends StatelessWidget {
         return Expanded(
           child: ListView.builder(
             itemBuilder: (context, index) =>
-                CategoryDetailsItemWidget(article: articles[index]),
+                ArticlesItemWidget(article: articles[index]),
             itemCount: articles.length,
           ),
         );

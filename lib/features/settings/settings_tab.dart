@@ -3,16 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/config/theme/app_styles.dart';
 import 'package:news_app/core/utils/colors_manager.dart';
 
-class Settings extends StatefulWidget {
-  const Settings({super.key});
+class SettingsTab extends StatefulWidget {
+  const SettingsTab({super.key});
 
   static List<String> language = ["English", "Arabic"];
 
   @override
-  State<Settings> createState() => _SettingsState();
+  State<SettingsTab> createState() => _SettingsTabState();
 }
 
-class _SettingsState extends State<Settings> {
+class _SettingsTabState extends State<SettingsTab> {
   String languageSelected = "English";
 
   @override

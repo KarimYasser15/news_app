@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/data/model/sources_response/source.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:news_app/presentation/screens/home/tabs/category_details/category_details_widget/category_details_widget.dart';
-import 'package:news_app/presentation/screens/home/tabs/category_details/sources_widget/source_item_widget.dart';
+import 'package:news_app/features/news/articles/view/articles_tab.dart';
+import 'package:news_app/features/news/sources/view/source_item_widget.dart';
 
 class SourcesWidget extends StatefulWidget {
   const SourcesWidget({super.key, required this.sources});
@@ -43,7 +43,7 @@ class _SourcesWidgetState extends State<SourcesWidget> {
                       ),
                     )
                     .toList())),
-        CategoryDetailsWidget(sourceId: widget.sources[selectedIndex].id!),
+        ArticlesTab(sourceId: widget.sources[selectedIndex].id!),
       ],
     );
   }

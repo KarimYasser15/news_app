@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/utils/routes_manager.dart';
 import 'package:news_app/data/model/articles_response/article.dart';
 
-import '../../../../../../config/theme/app_styles.dart';
+import '../../../../config/theme/app_styles.dart';
 
-class CategoryDetailsItemWidget extends StatelessWidget {
-  const CategoryDetailsItemWidget({super.key, required this.article});
+class ArticlesItemWidget extends StatelessWidget {
+  const ArticlesItemWidget({super.key, required this.article});
 
   final Article article;
   @override

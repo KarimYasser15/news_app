@@ -5,7 +5,7 @@ import 'package:news_app/data/api/api_manager.dart';
 import 'package:news_app/data/model/articles_response/article.dart';
 import 'package:news_app/data/model/articles_response/articles_response.dart';
 
-import '../home/tabs/category_details/category_details_widget/category_details_item_widget.dart';
+import '../news/articles/view/articles_item_widget.dart';
 
 class NewsSearchDelegate extends SearchDelegate {
   @override
@@ -63,7 +63,7 @@ class NewsSearchDelegate extends SearchDelegate {
         return Expanded(
           child: ListView.builder(
             itemBuilder: (context, index) =>
-                CategoryDetailsItemWidget(article: articleResponse[index]),
+                ArticlesItemWidget(article: articleResponse[index]),
             itemCount: articleResponse.length,
           ),
         );
@@ -87,8 +87,8 @@ class NewsSearchDelegate extends SearchDelegate {
         ArticlesResponse articleResponse = snapshot.data!;
         return Expanded(
           child: ListView.builder(
-            itemBuilder: (context, index) => CategoryDetailsItemWidget(
-                article: articleResponse.articles![index]),
+            itemBuilder: (context, index) =>
+                ArticlesItemWidget(article: articleResponse.articles![index]),
             itemCount: articleResponse.articles?.length ?? 0,
           ),
         );
