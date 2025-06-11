@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/config/theme/app_styles.dart';
 import 'package:news_app/config/assets_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../data/model/articles_response/article.dart';
+import '../news/articles/data/models/articles_response/article.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class ArticleDetailsScreen extends StatelessWidget {

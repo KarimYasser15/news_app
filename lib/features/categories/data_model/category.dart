@@ -24,12 +24,8 @@ class CategoryDataModel {
         AssetsManager.healthImage, BackendIdManager.healthId),
     CategoryDataModel(false, StringsManager.business, ColorsManager.brown,
         AssetsManager.businessImage, BackendIdManager.businessId),
-    CategoryDataModel(
-        false,
-        StringsManager.environment,
-        ColorsManager.lightBlue,
-        AssetsManager.environmentImage,
-        BackendIdManager.entertainmentId),
+    CategoryDataModel(true, StringsManager.environment, ColorsManager.lightBlue,
+        AssetsManager.environmentImage, BackendIdManager.entertainmentId),
     CategoryDataModel(false, StringsManager.science, ColorsManager.yellow,
         AssetsManager.scienceImage, BackendIdManager.scienceId),
   ];

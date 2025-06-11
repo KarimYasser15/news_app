@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/features/news/sources/data/model/source.dart';
+import 'package:news_app/features/news/sources/data/models/source.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/features/news/articles/view/articles_tab.dart';
 import 'package:news_app/features/news/sources/view/source_item_widget.dart';
@@ -43,7 +43,7 @@ class _SourcesWidgetState extends State<SourcesWidget> {
                       ),
                     )
                     .toList())),
-        ArticlesTab(sourceId: widget.sources[selectedIndex].id!),
+        ArticlesTab(sourceId: widget.sources[selectedIndex].id ?? ""),
       ],
     );
   }

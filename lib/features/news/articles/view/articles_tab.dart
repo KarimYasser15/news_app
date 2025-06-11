@@ -13,13 +13,12 @@ class ArticlesTab extends StatefulWidget {
 }
 
 class _ArticlesTabState extends State<ArticlesTab> {
-  final viewModel = ArticlesViewModel();
-
   @override
   Widget build(BuildContext context) {
+    final viewModel = ArticlesViewModel();
     viewModel.getArticles(widget.sourceId, "");
-    return ChangeNotifierProvider(
-      create: (context) => viewModel,
+    return ChangeNotifierProvider.value(
+      value: viewModel,
       child: Consumer<ArticlesViewModel>(
         builder: (context, viewModel, child) {
           if (viewModel.isLoading) {

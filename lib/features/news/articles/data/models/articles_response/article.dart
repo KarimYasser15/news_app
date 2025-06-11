@@ -1,4 +1,4 @@
-import 'package:news_app/features/news/sources/data/model/source.dart';
+import 'package:news_app/features/news/sources/data/models/source.dart';
 
 /// source : {"id":"wired","name":"Wired"}
 /// author : "Nena Farrell"

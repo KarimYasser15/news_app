@@ -61,12 +61,6 @@ class _HomeScreenState extends State<HomeScreen> {
         category: categorySelected,
       );
       appBarTitle = categorySelected.title;
-      searchButton = IconButton(
-        icon: const Icon(Icons.search),
-        onPressed: () => print("Search"),
-        //Navigator.pushNamed(context,RoutesManager.search),
-      );
-      appBarSearch = searchButton;
     });
   }
 

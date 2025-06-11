@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/config/theme/app_styles.dart';
 import 'package:news_app/config/colors_manager.dart';
-import 'package:news_app/features/news/sources/data/model/source.dart';
+import 'package:news_app/features/news/sources/data/models/source.dart';
 
 class SourceItemWidget extends StatelessWidget {
   const SourceItemWidget(

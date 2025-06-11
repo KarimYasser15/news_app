@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/data/model/articles_response/article.dart';
-import 'package:news_app/features/news/articles/data/articles_api_manager.dart';
+import 'package:news_app/core/api/service_locator.dart';
+import 'package:news_app/features/news/articles/data/models/articles_response/article.dart';
+import 'package:news_app/features/news/articles/data/repositories/articles_repository.dart';
 
 class ArticlesViewModel extends ChangeNotifier {
+  ArticlesViewModel() {
+    repository = ArticlesRepository(ServiceLocator.articlesDataSource);
+  }
+
   List<Article>? articles;
-  bool isLoading = false;
   String? errorMessage;
+  bool isLoading = false;
+  late final ArticlesRepository repository;
+
   Future<void> getArticles(
     String sourceId,
     String? search,
@@ -13,7 +20,7 @@ class ArticlesViewModel extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
     try {
-      articles = await ArticlesApiManager.getArticles(sourceId, search);
+      articles = await repository.getArticles(sourceId, search);
     } catch (error) {
       errorMessage = error.toString();
     }

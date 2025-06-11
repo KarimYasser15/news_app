@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/config/theme/my_theme.dart';
-import 'package:news_app/data/model/articles_response/article.dart';
-import 'package:news_app/features/news/articles/data/articles_api_manager.dart';
+import 'package:news_app/core/api/service_locator.dart';
+import 'package:news_app/features/news/articles/data/models/articles_response/article.dart';
 import '../news/articles/view/articles_item_widget.dart';
 
 class NewsSearchDelegate extends SearchDelegate {
@@ -47,7 +47,7 @@ class NewsSearchDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     return FutureBuilder(
-      future: ArticlesApiManager.getArticles("", query),
+      future: ServiceLocator.articlesDataSource.getArticles("", query),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
@@ -69,7 +69,7 @@ class NewsSearchDelegate extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     return FutureBuilder(
-      future: ArticlesApiManager.getArticles("", query),
+      future: ServiceLocator.articlesDataSource.getArticles("", query),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
