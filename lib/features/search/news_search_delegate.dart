@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/config/theme/my_theme.dart';
-import 'package:news_app/data/api/api_manager.dart';
 import 'package:news_app/data/model/articles_response/article.dart';
-import 'package:news_app/data/model/articles_response/articles_response.dart';
-
+import 'package:news_app/features/news/articles/data/articles_api_manager.dart';
 import '../news/articles/view/articles_item_widget.dart';
 
 class NewsSearchDelegate extends SearchDelegate {
@@ -18,7 +16,7 @@ class NewsSearchDelegate extends SearchDelegate {
         contentPadding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.r),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30.r),
-          borderSide: BorderSide.none, // Removes default border
+          borderSide: BorderSide.none,
         ),
       ),
     );
@@ -49,17 +47,14 @@ class NewsSearchDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     return FutureBuilder(
-      future: ApiManager.getArticles("", query),
+      future: ArticlesApiManager.getArticles("", query),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
-        if (snapshot.data?.status == "error" || snapshot.hasError) {
-          return Text(snapshot.data?.message ?? "Please Check Your Connection");
-        }
-        List<Article> articleResponse = snapshot.data!.articles!;
+        List<Article> articleResponse = snapshot.data!;
         return Expanded(
           child: ListView.builder(
             itemBuilder: (context, index) =>
@@ -74,22 +69,19 @@ class NewsSearchDelegate extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     return FutureBuilder(
-      future: ApiManager.getArticles("", query),
+      future: ArticlesApiManager.getArticles("", query),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
-        if (snapshot.hasError || snapshot.data == null) {
-          return Text(snapshot.data?.message ?? "Please Check Your Connection");
-        }
-        ArticlesResponse articleResponse = snapshot.data!;
+        List<Article>? articles = snapshot.data;
         return Expanded(
           child: ListView.builder(
             itemBuilder: (context, index) =>
-                ArticlesItemWidget(article: articleResponse.articles![index]),
-            itemCount: articleResponse.articles?.length ?? 0,
+                ArticlesItemWidget(article: articles![index]),
+            itemCount: articles?.length ?? 0,
           ),
         );
       },

@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:news_app/core/utils/assets_manager.dart';
-import 'package:news_app/core/utils/colors_manager.dart';
-import 'package:news_app/core/utils/routes_manager.dart';
+import 'package:news_app/config/assets_manager.dart';
+import 'package:news_app/config/colors_manager.dart';
+import 'package:news_app/config/routes_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Splash extends StatelessWidget {
@@ -18,15 +18,12 @@ class Splash extends StatelessWidget {
         alignment: AlignmentDirectional.center,
         children: [
           Image.asset(AssetsManager.backgroundSplash),
-          Column(children: [
-            const Spacer(),
-            SizedBox(
+          Center(
+            child: SizedBox(
                 width: 250.w,
                 height: 250.h,
                 child: Image.asset(AssetsManager.logoSplash)),
-            const Spacer(),
-            Image.asset(AssetsManager.routeSplash),
-          ]),
+          ),
         ],
       ),
     );

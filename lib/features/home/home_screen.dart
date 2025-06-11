@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/core/utils/assets_manager.dart';
-import 'package:news_app/core/utils/colors_manager.dart';
-import 'package:news_app/core/utils/strings_manager.dart';
+import 'package:news_app/config/assets_manager.dart';
+import 'package:news_app/config/colors_manager.dart';
+import 'package:news_app/config/strings_manager.dart';
 import 'package:news_app/features/categories/data_model/category.dart';
 import 'package:news_app/features/home/drawer/home_drawer.dart';
 import 'package:news_app/features/categories/categories.dart';

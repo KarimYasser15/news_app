@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/config/theme/app_styles.dart';
-import 'package:news_app/core/utils/colors_manager.dart';
+import 'package:news_app/config/colors_manager.dart';
 
 class SettingsTab extends StatefulWidget {
   const SettingsTab({super.key});

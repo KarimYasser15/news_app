@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:news_app/core/utils/routes_manager.dart';
+import 'package:news_app/config/routes_manager.dart';
 import 'package:news_app/data/model/articles_response/article.dart';
 
 import '../../../../config/theme/app_styles.dart';
