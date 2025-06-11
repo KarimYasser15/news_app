@@ -1,2 +1,0 @@
-D:/Projects/Flutter Course/Flutter/news_app/android/app/.cxx/Debug/5k5gm2qc/armeabi-v7a/CMakeFiles/edit_cache.dir
-D:/Projects/Flutter Course/Flutter/news_app/android/app/.cxx/Debug/5k5gm2qc/armeabi-v7a/CMakeFiles/rebuild_cache.dir
