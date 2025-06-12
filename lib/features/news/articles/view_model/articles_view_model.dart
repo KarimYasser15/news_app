@@ -1,30 +1,26 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/api/service_locator.dart';
 import 'package:news_app/features/news/articles/data/models/articles_response/article.dart';
 import 'package:news_app/features/news/articles/data/repositories/articles_repository.dart';
+import 'package:news_app/features/news/articles/view_model/articles_states.dart';
 
-class ArticlesViewModel extends ChangeNotifier {
-  ArticlesViewModel() {
+class ArticlesViewModel extends Cubit<ArticlesStates> {
+  ArticlesViewModel() : super(ArticlesInitialState()) {
     repository = ArticlesRepository(ServiceLocator.articlesDataSource);
   }
 
-  List<Article>? articles;
-  String? errorMessage;
-  bool isLoading = false;
   late final ArticlesRepository repository;
 
   Future<void> getArticles(
     String sourceId,
     String? search,
   ) async {
-    isLoading = true;
-    notifyListeners();
+    emit(GetArticlesLoadingState());
     try {
-      articles = await repository.getArticles(sourceId, search);
+      List<Article> articles = await repository.getArticles(sourceId, search);
+      emit(GetArticlesSuccesState(articles));
     } catch (error) {
-      errorMessage = error.toString();
+      emit(GetArticlesErrorState(error.toString()));
     }
-    isLoading = false;
-    notifyListeners();
   }
 }

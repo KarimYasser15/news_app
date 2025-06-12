@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/features/categories/data_model/category.dart';
 import 'package:news_app/features/news/sources/data/models/source.dart';
 import 'package:news_app/features/news/sources/view/sources_widget.dart';
+import 'package:news_app/features/news/sources/view_model/sources_states.dart';
 import 'package:news_app/features/news/sources/view_model/sources_view_model.dart';
-import 'package:provider/provider.dart';
 
 class NewsTab extends StatefulWidget {
   const NewsTab({super.key, required this.category});
@@ -19,22 +20,24 @@ class _NewsTabState extends State<NewsTab> {
   Widget build(BuildContext context) {
     final SourcesViewModel viewModel = SourcesViewModel();
     viewModel.getSources(widget.category.title);
-    return ChangeNotifierProvider.value(
+    return BlocProvider.value(
         value: viewModel,
-        child: Consumer<SourcesViewModel>(
-          builder: (context, viewModel, child) {
-            if (viewModel.isLoading) {
+        child: BlocBuilder<SourcesViewModel, SourcesStates>(
+          builder: (context, state) {
+            if (state is GetSourcesLoadingState) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            }
-            if (viewModel.sources.isEmpty) {
-              return const Center(
-                child: Text("No Sources Available"),
+            } else if (state is GetSourcesErrortate) {
+              return Center(
+                child: Text(state.errorMessage),
               );
+            } else if (state is GetSourcesSuccesstate) {
+              final List<Source> sources = state.sources;
+              return SourcesWidget(sources: sources);
+            } else {
+              return const SizedBox();
             }
-            List<Source> sources = viewModel.sources;
-            return SourcesWidget(sources: sources);
           },
         ));
   }
